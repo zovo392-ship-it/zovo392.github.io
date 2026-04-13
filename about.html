@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关于我 | Zovo的作品集</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+      body { cursor: default !important; }
+      .custom-cursor { display: none !important; }
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #fff;
+      color: #111;
+      cursor: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    body.loaded { opacity: 1; }
+    .custom-cursor {
+      position: fixed;
+      width: 16px;
+      height: 16px;
+      background: #111;
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+      will-change: transform;
+      transform: translate(-50%, -50%);
+    }
+    .custom-cursor.hover {
+      transform: translate(-50%, -50%) scale(1.8);
+      background: #000;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo { font-size: 1.2rem; font-weight: 600; }
+    .nav-list { display: flex; gap: 3rem; list-style: none; }
+    .nav-link { position: relative; text-decoration: none; color: #111; font-size: 1rem; transition: color 0.3s ease; }
+    .nav-link:hover, .nav-link.active { color: #000; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: #000; transition: width 0.3s ease; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    /* 关于我顶部图片样式 */
+    .about-img {
+      width: 100%;
+      max-width: 800px;
+      height: 300px;
+      background: #f5f5f5;
+      margin-bottom: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+    /* 标题样式：弹性布局实现底部对齐 */
+    .page-title { 
+      font-size: 3rem; 
+      font-weight: 700; 
+      margin-bottom: 2rem; /* 缩小标题与内容间距 */
+      line-height: 1.2;
+      display: flex;
+      align-items: baseline; /* 核心：中英文底部对齐 */
+    }
+    /* 英文副标题：缩小一半、字体变细、底部对齐 */
+    .page-title span {
+      font-size: 0.5em;
+      font-weight: 300;
+      margin-left: 0.5rem;
+    }
+    .about-content { 
+      max-width: 800px; 
+      line-height: 2.2; 
+      font-size: 1.2rem; 
+      color: #333; 
+    }
+    .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+    .footer { margin-top: 8rem; font-size: 0.9rem; color: #666; text-align: center; }
+    @media (max-width: 768px) {
+      .page-title { font-size: 2.2rem; }
+      .about-img { height: 200px; }
+      body { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="custom-cursor"></div>
+  <nav class="nav animate-on-scroll">
+    <!-- 左上角：Zovo的作品集 -->
+    <div class="logo">Zovo的作品集</div>
+    <ul class="nav-list">
+      <!-- 导航顺序：首页 → 关于我 → 联系方式 -->
+      <li><a href="index.html" class="nav-link">首页</a></li>
+      <!-- 关于我：禁止点击 + 下划线高亮 -->
+      <li><a href="javascript:void(0)" class="nav-link active">关于我</a></li>
+      <li><a href="contact.html" class="nav-link">联系方式</a></li>
+    </ul>
+  </nav>
+
+  <!-- 标题上方图片 -->
+  <div class="about-img animate-on-scroll">
+    个人形象/作品展示图（可替换为你的图片）
+  </div>
+
+  <!-- 标题：中英文底部对齐 -->
+  <h1 class="page-title animate-on-scroll">关于我<span>/ about me</span></h1>
+  
+  <!-- 替换后的获奖荣誉文案 -->
+  <div class="about-content animate-on-scroll">
+    <p>《中国国际大学生创新大赛》 ——银奖</p>
+    <p>《中国创意挑战大赛》国赛——三等奖</p>
+    <p>《凤安乡村壁画设计大赛》—— 一等奖</p>
+    <p>《2025广文艺大学生创新大赛》——三等奖</p>
+    <p>《广文艺第一届反诈原创作品》——二等奖</p>
+    <p>《广文艺法律实践社IP设计大赛》—— 一等奖</p>
+    <p>《校园ppt设计大赛》——三等奖</p>
+  </div>
+
+  <footer class="footer animate-on-scroll">© 2025 Zovo的作品集 | 保留所有权利</footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>{document.body.classList.add('loaded');if(!document.querySelector('.custom-cursor'))document.body.style.cursor='default';});
+    const cursor=document.querySelector('.custom-cursor');document.addEventListener('mousemove',(e)=>{requestAnimationFrame(()=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});});
+    const interactive=document.querySelectorAll('.nav-link,a');interactive.forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));});
+    function isInViewport(el){const rect=el.getBoundingClientRect();return rect.top<=window.innerHeight*0.8&&rect.bottom>=0;}
+    function checkScroll(){document.querySelectorAll('.animate-on-scroll').forEach(el=>{if(isInViewport(el)&&!el.classList.contains('visible'))el.classList.add('visible');});}
+    window.addEventListener('load',checkScroll);window.addEventListener('scroll',checkScroll);
+  </script>
+</body>
+</html>
