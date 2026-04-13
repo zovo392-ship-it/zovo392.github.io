@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zovo的作品集 | 视觉创意设计</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+      body { cursor: default !important; }
+      .custom-cursor { display: none !important; }
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: #fff;
+      color: #111;
+      cursor: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    body.loaded { opacity: 1; }
+    .custom-cursor {
+      position: fixed;
+      width: 16px;
+      height: 16px;
+      background: #111;
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+      will-change: transform;
+      transform: translate(-50%, -50%);
+    }
+    .custom-cursor.hover {
+      transform: translate(-50%, -50%) scale(1.8);
+      background: #000;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .nav-list {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+    }
+    .nav-link {
+      position: relative;
+      text-decoration: none;
+      color: #111;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #000;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #000;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .hero {
+      margin-bottom: 6rem;
+    }
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      color: #666;
+      max-width: 600px;
+    }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 3rem;
+      margin-bottom: 8rem;
+    }
+    .work-card {
+      cursor: none;
+      transition: transform 0.3s ease;
+    }
+    .work-card:hover {
+      transform: translateY(-8px);
+    }
+    .work-img {
+      width: 100%;
+      height: 260px;
+      background: #f5f5f5;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #333;
+      border-radius: 2px;
+      /* 新增：防止图片变形 */
+      object-fit: cover;
+    }
+    .work-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .footer {
+      margin-top: 8rem;
+      font-size: 0.9rem;
+      color: #666;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.2rem; }
+      .works-grid { gap: 2rem; }
+      body { padding: 1.5rem; }
+      .nav-list { gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="custom-cursor"></div>
+
+  <nav class="nav animate-on-scroll">
+    <div class="logo">Zovo的作品集</div>
+    <ul class="nav-list">
+      <li><a href="index.html" class="nav-link active">首页</a></li>
+      <li><a href="about.html" class="nav-link">关于我</a></li>
+      <li><a href="contact.html" class="nav-link">联系方式</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero animate-on-scroll">
+    <h1 class="hero-title">视觉创意设计<br>专注多元设计领域</h1>
+    <p class="hero-desc">用极简的视觉语言，打造有温度、有创意的设计作品</p>
+  </section>
+
+  <section class="works-grid animate-on-scroll">
+    <!-- 品牌设计 - 替换为指定图片名 -->
+    <div class="work-card">
+      <img src="Brand-Designs" class="work-img" alt="品牌设计作品展示">
+      <h3 class="work-title">品牌设计</h3>
+    </div>
+    <!-- 标志设计 - 替换为指定图片名 -->
+    <div class="work-card">
+      <img src="Logo-Design" class="work-img" alt="标志设计作品展示">
+      <h3 class="work-title">标志设计</h3>
+    </div>
+    <!-- 海报设计 - 替换为指定图片名 -->
+    <div class="work-card">
+      <img src="Poster-Layout" class="work-img" alt="海报设计作品展示">
+      <h3 class="work-title">海报设计</h3>
+    </div>
+    <!-- IP设计 - 替换为指定图片名 -->
+    <div class="work-card">
+      <img src="IP Image Design" class="work-img" alt="IP设计作品展示">
+      <h3 class="work-title">IP设计</h3>
+    </div>
+    <!-- 字体设计 - 替换为指定图片名 -->
+    <div class="work-card">
+      <img src="Font-Design" class="work-img" alt="字体设计作品展示">
+      <h3 class="work-title">字体设计</h3>
+    </div>
+    <!-- 摄影作品 - 替换为指定图片名 -->
+    <div class="work-card">
+      <img src="Photography-Works" class="work-img" alt="摄影作品展示">
+      <h3 class="work-title">摄影作品</h3>
+    </div>
+  </section>
+
+  <footer class="footer animate-on-scroll">
+    © 2025 Zovo的作品集 | 保留所有权利
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+      if (!document.querySelector('.custom-cursor')) document.body.style.cursor = 'default';
+    });
+    const cursor = document.querySelector('.custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      requestAnimationFrame(() => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+    });
+    const interactive = document.querySelectorAll('.nav-link, .work-card, a');
+    interactive.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0;
+    }
+    function checkScroll() {
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        if (isInViewport(el) && !el.classList.contains('visible')) el.classList.add('visible');
+      });
+    }
+    window.addEventListener('load', checkScroll);
+    window.addEventListener('scroll', checkScroll);
+  </script>
+</body>
+</html>
