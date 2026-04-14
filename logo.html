@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>标志设计 | Zovo的作品集</title>
+  <style>
+    /* 复制和海报设计页面完全一致的<style>内容 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+      body { cursor: default !important; }
+      .custom-cursor { display: none !important; }
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: #fff;
+      color: #111;
+      cursor: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      padding: 2rem;
+      max-width: 1920px;
+      margin: 0 auto;
+    }
+    body.loaded { opacity: 1; }
+    .custom-cursor {
+      position: fixed;
+      width: 16px;
+      height: 16px;
+      background: #111;
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+      will-change: transform;
+      transform: translate(-50%, -50%);
+    }
+    .custom-cursor.hover {
+      transform: translate(-50%, -50%) scale(1.8);
+      background: #000;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .back-btn {
+      text-decoration: none;
+      color: #111;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      color: #000;
+      transform: translateY(-3px);
+    }
+    .back-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #000;
+      transition: width 0.3s ease;
+    }
+    .back-btn:hover::after {
+      width: 100%;
+    }
+    .module-nav-list {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .module-nav-link {
+      position: relative;
+      text-decoration: none;
+      color: #111;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .module-nav-link:hover {
+      color: #000;
+    }
+    .module-nav-link.active {
+      color: #000;
+      font-weight: 600;
+    }
+    .module-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #000;
+      transition: width 0.3s ease;
+    }
+    .module-nav-link:hover::after,
+    .module-nav-link.active::after {
+      width: 100%;
+    }
+    .works-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 8rem;
+      width: 100%;
+    }
+    .work-card {
+      cursor: none;
+      transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .work-card:hover {
+      transform: translateY(-8px);
+    }
+    .work-img {
+      width: 100%;
+      height: 675px;
+      background: #f5f5f5;
+      border-radius: 2px;
+      object-fit: contain;
+    }
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .footer {
+      margin-top: 8rem;
+      font-size: 0.9rem;
+      color: #666;
+      text-align: center;
+    }
+    @media (max-width: 1200px) {
+      .work-img {
+        height: auto;
+        aspect-ratio: 1200 / 675;
+      }
+    }
+    @media (max-width: 768px) {
+      body { padding: 1.5rem; }
+      .module-nav-list { gap: 1.5rem; }
+      .nav { margin-bottom: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="custom-cursor"></div>
+
+  <nav class="nav animate-on-scroll">
+    <a href="index.html" class="back-btn">← 返回首页</a>
+    <ul class="module-nav-list">
+      <li><a href="brand.html" class="module-nav-link">品牌设计</a></li>
+      <li><a href="logo.html" class="module-nav-link active">标志设计</a></li>
+      <li><a href="poster.html" class="module-nav-link">海报设计</a></li>
+      <li><a href="ip.html" class="module-nav-link">IP设计</a></li>
+      <li><a href="font.html" class="module-nav-link">字体设计</a></li>
+      <li><a href="photography.html" class="module-nav-link">摄影作品</a></li>
+    </ul>
+  </nav>
+
+  <section class="works-grid animate-on-scroll">
+    <div class="work-card">
+      <img src="logo-1.jpg" class="work-img" alt="标志设计作品1">
+    </div>
+    <div class="work-card">
+      <img src="logo-2.jpg" class="work-img" alt="标志设计作品2">
+    </div>
+    <!-- 可无限添加图片 -->
+  </section>
+
+  <footer class="footer animate-on-scroll">
+    © 2025 Zovo的作品集 | 保留所有权利
+  </footer>
+
+  <script>
+    // 复制和海报设计页面完全一致的JS
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+      if (!document.querySelector('.custom-cursor')) document.body.style.cursor = 'default';
+    });
+    const cursor = document.querySelector('.custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      requestAnimationFrame(() => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+    });
+    const interactive = document.querySelectorAll('.module-nav-link, .work-card, .back-btn');
+    interactive.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0;
+    }
+    function checkScroll() {
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        if (isInViewport(el) && !el.classList.contains('visible')) el.classList.add('visible');
+      });
+    }
+    window.addEventListener('load', checkScroll);
+    window.addEventListener('scroll', checkScroll);
+  </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海报设计 | Zovo的作品集</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+      body { cursor: default !important; }
+      .custom-cursor { display: none !important; }
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: #fff;
+      color: #111;
+      cursor: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      padding: 2rem;
+      max-width: 1920px;
+      margin: 0 auto;
+    }
+    body.loaded { opacity: 1; }
+    .custom-cursor {
+      position: fixed;
+      width: 16px;
+      height: 16px;
+      background: #111;
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+      will-change: transform;
+      transform: translate(-50%, -50%);
+    }
+    .custom-cursor.hover {
+      transform: translate(-50%, -50%) scale(1.8);
+      background: #000;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    /* 返回按钮悬浮动画 */
+    .back-btn {
+      text-decoration: none;
+      color: #111;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      color: #000;
+      transform: translateY(-3px);
+    }
+    .back-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #000;
+      transition: width 0.3s ease;
+    }
+    .back-btn:hover::after {
+      width: 100%;
+    }
+    /* 模块跳转菜单样式 */
+    .module-nav-list {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .module-nav-link {
+      position: relative;
+      text-decoration: none;
+      color: #111;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .module-nav-link:hover {
+      color: #000;
+    }
+    .module-nav-link.active {
+      color: #000;
+      font-weight: 600;
+    }
+    .module-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #000;
+      transition: width 0.3s ease;
+    }
+    .module-nav-link:hover::after,
+    .module-nav-link.active::after {
+      width: 100%;
+    }
+    /* 核心修改：单列居中 + 固定1200px*675px图片尺寸 + 无上限 */
+    .works-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 整体居中 */
+      gap: 3rem;
+      margin-bottom: 8rem;
+      width: 100%;
+    }
+    .work-card {
+      cursor: none;
+      transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 1200px; /* 卡片最大宽度=图片宽度 */
+    }
+    .work-card:hover {
+      transform: translateY(-8px);
+    }
+    .work-img {
+      width: 100%; /* 自适应卡片宽度，最大1200px */
+      height: 675px; /* 固定高度675px */
+      background: #f5f5f5;
+      border-radius: 2px;
+      object-fit: contain; /* 保持图片比例，不拉伸 */
+    }
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .footer {
+      margin-top: 8rem;
+      font-size: 0.9rem;
+      color: #666;
+      text-align: center;
+    }
+    /* 响应式适配：屏幕小于1200px时，图片自动缩放，保持1200:675比例 */
+    @media (max-width: 1200px) {
+      .work-img {
+        height: auto; /* 取消固定高度 */
+        aspect-ratio: 1200 / 675; /* 固定宽高比 16:9 */
+      }
+    }
+    @media (max-width: 768px) {
+      body { padding: 1.5rem; }
+      .module-nav-list { gap: 1.5rem; }
+      .nav { margin-bottom: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="custom-cursor"></div>
+
+  <nav class="nav animate-on-scroll">
+    <a href="index.html" class="back-btn">← 返回首页</a>
+    <ul class="module-nav-list">
+      <li><a href="brand.html" class="module-nav-link">品牌设计</a></li>
+      <li><a href="logo.html" class="module-nav-link">标志设计</a></li>
+      <li><a href="poster.html" class="module-nav-link active">海报设计</a></li>
+      <li><a href="ip.html" class="module-nav-link">IP设计</a></li>
+      <li><a href="font.html" class="module-nav-link">字体设计</a></li>
+      <li><a href="photography.html" class="module-nav-link">摄影作品</a></li>
+    </ul>
+  </nav>
+
+  <section class="works-grid animate-on-scroll">
+    <!-- 图片1 -->
+    <div class="work-card">
+      <img src="poster-1.jpg" class="work-img" alt="海报设计作品1">
+    </div>
+    <!-- 图片2 -->
+    <div class="work-card">
+      <img src="poster-2.jpg" class="work-img" alt="海报设计作品2">
+    </div>
+    <!-- 图片3 -->
+    <div class="work-card">
+      <img src="poster-3.jpg" class="work-img" alt="海报设计作品3">
+    </div>
+    <!-- 可无限添加图片，复制以下模块即可 -->
+     <!-- 图片4 -->
+    <div class="work-card">
+      <img src="poster-4.jpg" class="work-img" alt="海报设计作品3">
+    </div>
+ <!-- 图片5 -->
+    <div class="work-card">
+      <img src="poster-5.jpg" class="work-img" alt="海报设计作品3">
+    </div>
+ <!-- 图片6 -->
+    <div class="work-card">
+      <img src="poster-6.jpg" class="work-img" alt="海报设计作品3">
+    </div>
+ <!-- 图片7 -->
+    <div class="work-card">
+      <img src="poster-7.jpg" class="work-img" alt="海报设计作品3">
+    </div>
+ <!-- 图片8 -->
+    <div class="work-card">
+      <img src="poster-8.jpg" class="work-img" alt="海报设计作品3">
+    </div>
+ <!-- 图片9 -->
+    <div class="work-card">
+      <img src="poster-9.jpg" class="work-img" alt="海报设计作品3">
+    </div>
+
+    -->
+  </section>
+
+  <footer class="footer animate-on-scroll">
+    © 2025 Zovo的作品集 | 保留所有权利
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+      if (!document.querySelector('.custom-cursor')) document.body.style.cursor = 'default';
+    });
+    const cursor = document.querySelector('.custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      requestAnimationFrame(() => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+    });
+    const interactive = document.querySelectorAll('.module-nav-link, .work-card, .back-btn');
+    interactive.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0;
+    }
+    function checkScroll() {
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        if (isInViewport(el) && !el.classList.contains('visible')) el.classList.add('visible');
+      });
+    }
+    window.addEventListener('load', checkScroll);
+    window.addEventListener('scroll', checkScroll);
+  </script>
+</body>
+</html>
